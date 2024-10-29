@@ -1,6 +1,7 @@
 import style from '../styles/listaProdutos.module.css'
+import AdicionarAoCarrinho from '../compontents/AdicionarAoCarrinho'
 
-export default function ListarProdutos({ lista }) {
+export default function ListarProdutos({ lista, button, setCarrinho, listaCarrinho }) {
     return (
         <main className={style.containerProdutos}>
             {
@@ -9,7 +10,7 @@ export default function ListarProdutos({ lista }) {
                         <img src={el.image} alt={el.title} className={style.imagem}></img>
                         <p className={style.textoTitulo}>{el.title}</p>
                         <p>R$ {el.price}</p>
-                        <button onClick={}>Adicionar ao Carrinho</button>
+                        {button && <AdicionarAoCarrinho setCarrinho={setCarrinho} carrinhoAtual={listaCarrinho} produto={el}></AdicionarAoCarrinho>}
                     </div>
                 ))
             }

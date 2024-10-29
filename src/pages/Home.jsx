@@ -3,6 +3,7 @@ import ListarProdutos from '../compontents/ListarProdutos'
 
 export default function Home() {
     const [produtos, setProdutos] = useState([])
+    const [produtosCarrinho, setProdutosCarrinho] = useState([])
 
     useEffect(() => {
         const receberLista = async () => {
@@ -16,11 +17,17 @@ export default function Home() {
         }
         receberLista()
     }, [])
-    
+
     return (
         <>
-            <h1>Produtos:</h1>
-            <ListarProdutos lista={produtos}></ListarProdutos>
+            <div>
+                <h1>Produtos:</h1>
+                <ListarProdutos lista={produtos} button={true}  setCarrinho={setProdutosCarrinho} listaCarrinho={produtosCarrinho}></ListarProdutos>
+            </div>
+            <div>
+                <h1>Produtos carrinho:</h1>
+                <ListarProdutos lista={produtosCarrinho} button={false}></ListarProdutos>
+            </div>
         </>
     )
 }
