@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import ListarProdutos from '../compontents/ListarProdutos'
+import style from '../styles/style.module.css'
 
 export default function Home() {
     const [produtos, setProdutos] = useState([])
@@ -19,15 +20,15 @@ export default function Home() {
     }, [])
 
     return (
-        <>
-            <div>
-                <h1>Produtos:</h1>
-                <ListarProdutos lista={produtos} button={true}  setCarrinho={setProdutosCarrinho} listaCarrinho={produtosCarrinho}></ListarProdutos>
+        <div className={style.container}>
+            <div className={style.produtos}>
+                <h1 className={style.titulo}>Produtos:</h1>
+                <ListarProdutos lista={produtos} button={true} setCarrinho={setProdutosCarrinho} listaCarrinho={produtosCarrinho} />
             </div>
-            <div>
-                <h1>Produtos carrinho:</h1>
-                <ListarProdutos lista={produtosCarrinho} button={false}></ListarProdutos>
+            <div className={style.carrinho}>
+                <h1 className={style.titulo}>Produtos no Carrinho:</h1>
+                <ListarProdutos lista={produtosCarrinho} button={false} setCarrinho={setProdutosCarrinho} listaCarrinho={produtosCarrinho}/>
             </div>
-        </>
+        </div>
     )
 }
