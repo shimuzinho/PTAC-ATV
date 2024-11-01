@@ -1,8 +1,9 @@
 import style from '../styles/style.module.css'
 import AdicionarAoCarrinho from './AdicionarAoCarrinho'
 import RemoverDoCarrinho from './RemoverDoCarrinho'
+import RemoverProduto from './RemoverProduto'
 
-export default function ListarProdutos({ lista, button, setCarrinho, listaCarrinho }) {
+export default function ListarProdutos({ lista, button, setCarrinho, listaCarrinho, setProdutos, produtos }) {
     return (
         <main className={style.containerProdutos}>
             {lista.map(el => (
@@ -13,6 +14,9 @@ export default function ListarProdutos({ lista, button, setCarrinho, listaCarrin
                     {button ? (
                         <AdicionarAoCarrinho setCarrinho={setCarrinho} carrinhoAtual={listaCarrinho} produto={el}/>
                     ) : (<RemoverDoCarrinho setCarrinho={setCarrinho} carrinhoAtual={listaCarrinho} produto={el}/>)}
+                    {el.id > 30 && (
+                        <RemoverProduto setCarrinho={setCarrinho} carrinhoAtual={listaCarrinho} produto={el} setProdutos={setProdutos} produtos={produtos}/>
+                    )}
                 </div>
             ))}
         </main>
