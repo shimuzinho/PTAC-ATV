@@ -2,8 +2,17 @@ import style from '../styles/style.module.css'
 import AdicionarAoCarrinho from './AdicionarAoCarrinho'
 import RemoverDoCarrinho from './RemoverDoCarrinho'
 import RemoverProduto from './RemoverProduto'
+import Loading from './Loading'
 
-export default function ListarProdutos({ lista, button, setCarrinho, listaCarrinho, setProdutos, produtos }) {
+export default function ListarProdutos({ lista, button, setCarrinho, listaCarrinho, setProdutos, produtos, loading }) {
+    if (loading) {
+        if (lista.length == 0) {
+            return (
+                <Loading/>
+            )
+        }
+    }
+
     return (
         <main className={style.containerProdutos}>
             {lista.map(el => (

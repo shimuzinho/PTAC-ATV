@@ -26,11 +26,11 @@ export default function Home() {
             <div className={style.container}>
                 <div className={style.produtos}>
                     <h1 className={style.titulo}>Produtos:</h1>
-                    <ListarProdutos lista={produtos} button={true} setCarrinho={setProdutosCarrinho} listaCarrinho={produtosCarrinho} setProdutos={setProdutos} produtos={produtos}/>
+                    <ListarProdutos lista={produtos} button={true} setCarrinho={setProdutosCarrinho} listaCarrinho={produtosCarrinho} setProdutos={setProdutos} produtos={produtos} loading={true}/>
                 </div>
                 <div className={style.carrinho}>
                     <h1 className={style.titulo}>Produtos no Carrinho:</h1>
-                    <ListarProdutos lista={produtosCarrinho} button={false} setCarrinho={setProdutosCarrinho} listaCarrinho={produtosCarrinho}/>
+                    <ListarProdutos lista={produtosCarrinho} button={false} setCarrinho={setProdutosCarrinho} listaCarrinho={produtosCarrinho} loading={false}/>
                 </div>
             </div>
         </>

@@ -2,6 +2,10 @@
     font-family: 'Roboto', sans-serif;
 }
 
+body {
+    background-color: #f9f9f9;
+}
+
 .container {
     display: flex;
     justify-content: space-between;
@@ -120,4 +124,8 @@
   
   .button:hover {
     background-color: #218838;
+  }
+
+  .loading {
+    text-align: center;
   }
