@@ -14,7 +14,7 @@ export default function Home() {
                 const dados = await lista.json()
                 setProdutos(dados.products)
             } catch (err) {
-                console.alert('Ocorreu um erro na conexão com a API')
+                alert('Ocorreu um erro na conexão com a API')
             }
         }
         receberLista()
