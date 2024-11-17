@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import ListarProdutos from '../compontents/ListarProdutos'
+import ListarProdutos from '../components/ListarProdutos'
 import style from '../styles/style.module.css'
-import AdicionarProduto from '../compontents/AdicionarProduto'
+import AdicionarProduto from '../components/AdicionarProduto'
 
 export default function Home() {
     const [produtos, setProdutos] = useState([])
