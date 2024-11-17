@@ -30,7 +30,7 @@ export default function Home() {
                 </div>
                 <div className={style.carrinho}>
                     <h1 className={style.titulo}>Produtos no Carrinho:</h1>
-                    <ListarProdutos lista={produtosCarrinho} button={false} setCarrinho={setProdutosCarrinho} listaCarrinho={produtosCarrinho} loading={false}/>
+                    <ListarProdutos lista={produtosCarrinho} button={false} setCarrinho={setProdutosCarrinho} listaCarrinho={produtosCarrinho} loading={false} tipo={'carrinho'}/>
                 </div>
             </div>
         </>

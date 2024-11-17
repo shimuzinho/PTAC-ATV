@@ -1,14 +1,16 @@
 import style from '../styles/style.module.css'
 
-export default function RemoverProduto ({setCarrinho, carrinho, produto, setProdutos, produtos}) {
+export default function RemoverProduto ({ setCarrinho, carrinhoAtual, produto, setProdutos, produtos }) {
   const removerProdutoArray = (prod) => {
     const novosProdutos = produtos.filter(el => el.id != prod.id)
     setProdutos(novosProdutos)
   }
 
+  console.log(carrinhoAtual)
+
   const removerProdutoCarrinho = (prod) => {
-    if (carrinho.includes(prod)) {
-      const novoCarrinho = carrinho.filter(el => el.id != prod.id)
+    if (carrinhoAtual.includes(prod)) {
+      const novoCarrinho = carrinhoAtual.filter(el => el.id != prod.id)
       setCarrinho(novoCarrinho)
     }
   }
@@ -17,6 +19,6 @@ export default function RemoverProduto ({setCarrinho, carrinho, produto, setProd
     <button className={style.botaoRemover} onClick={() => {
       removerProdutoArray(produto)
       removerProdutoCarrinho(produto)
-    }}></button>
+    }}>Remover Produto</button>
   )
 }

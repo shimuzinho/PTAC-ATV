@@ -1,42 +1,31 @@
-import style from '../styles/style.module.css'
-import { useRef } from 'react';
+import { useForm } from 'react-hook-form';
+import style from '../styles/style.module.css';
 
-export default function AdicionarProduto ( {setProdutos, produtos} ) {
-  const idRef = useRef(30)  
+export default function AdicionarProduto({ setProdutos, produtos }) {
+  const { register, handleSubmit } = useForm();
 
-  const adicionar = (event) => {
-    event.preventDefault()
+  const adicionar = (novoProduto) => {
+    novoProduto.id = Date.now()
+    novoProduto.images = [
+      novoProduto.images
+    ];
+    setProdutos([novoProduto, ...produtos]);
+  };
 
-    const nome = event.target.nome.value
-    const imagem = event.target.imagem.value
-    const valor = parseFloat(event.target.preco.value)
-
-    const novoProduto = {
-      id: ++idRef.current,
-      "title": nome,
-      "images": [
-        imagem
-      ],
-      "price": valor
-    }
-
-    setProdutos([novoProduto, ...produtos])
-  }
-
-  return(
+  return (
     <>
-      <form onSubmit={adicionar} className={style.form}>
+      <form onSubmit={handleSubmit(adicionar)} className={style.form}>
         <label htmlFor="nome" className={style.label}>Nome do produto: </label>
-        <input name="nome" className={style.input} required />
-        
+        <input name="nome" className={style.input} required {...register('title')}/>
+
         <label htmlFor="imagem" className={style.label}>Imagem do produto: </label>
-        <input name="imagem" className={style.input} required />
-        
+        <input name="imagem" className={style.input} required {...register('images')}/>
+
         <label htmlFor="preco" className={style.label}>Preço do produto: </label>
-        <input name="preco" type="number" step="0.01" className={style.input} required />
-        
+        <input name="preco" type="number" step="0.01" className={style.input} required {...register('price')}/>
+
         <button type="submit" className={style.button}>Adicionar Produto</button>
       </form>
     </>
-  )
-}
+  );
+};
