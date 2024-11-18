@@ -4,7 +4,7 @@ import RemoverDoCarrinho from './RemoverDoCarrinho'
 import RemoverProduto from './RemoverProduto'
 import Loading from './Loading'
 
-export default function ListarProdutos({ lista, button, setCarrinho, listaCarrinho, setProdutos, produtos, loading, tipo }) {
+export default function ListarProdutos({ lista, button = false, setCarrinho, listaCarrinho, setProdutos, loading, tipo }) {
     if (loading) {
         if (lista.length == 0) {
             return (
@@ -13,7 +13,6 @@ export default function ListarProdutos({ lista, button, setCarrinho, listaCarrin
         }
     }
 
-    console.log(listaCarrinho);
     return (
         <main className={style.containerProdutos}>
             {lista.map(el => (
@@ -25,7 +24,7 @@ export default function ListarProdutos({ lista, button, setCarrinho, listaCarrin
                         <AdicionarAoCarrinho setCarrinho={setCarrinho} carrinhoAtual={listaCarrinho} produto={el}/>
                     ) : (<RemoverDoCarrinho setCarrinho={setCarrinho} carrinhoAtual={listaCarrinho} produto={el}/>)}
                     {el.id > 30 && tipo != 'carrinho' && (
-                        <RemoverProduto setCarrinho={setCarrinho} carrinhoAtual={listaCarrinho} produto={el} setProdutos={setProdutos} produtos={produtos}/>
+                        <RemoverProduto setCarrinho={setCarrinho} carrinhoAtual={listaCarrinho} produto={el} setProdutos={setProdutos} produtos={lista}/>
                     )}
                 </div>
             ))}

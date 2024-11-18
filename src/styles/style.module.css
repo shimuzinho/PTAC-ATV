@@ -13,7 +13,8 @@ body {
     background-color: #f9f9f9;
 }
 
-.produtos, .carrinho {
+.produtos,
+.carrinho {
     flex: 1;
     margin: 10px;
     padding: 20px;
@@ -69,7 +70,8 @@ body {
     font-size: 18px;
 }
 
-.botaoAdicionar, .botaoRemover{
+.botaoAdicionar,
+.botaoRemover {
     background-color: #28a745;
     color: white;
     border: none;
@@ -79,7 +81,8 @@ body {
     transition: background-color 0.3s;
 }
 
-.botaoAdicionar:hover, .botaoRemover {
+.botaoAdicionar:hover,
+.botaoRemover {
     background-color: #218838;
 }
 
@@ -100,33 +103,33 @@ body {
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #f9f9f9;
-  }
-  
-  .label {
+}
+
+.label {
     margin-bottom: 5px;
     font-weight: bold;
-  }
-  
-  .input {
+}
+
+.input {
     margin-bottom: 15px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-  }
-  
-  .button {
+}
+
+.button {
     padding: 10px;
     background-color: #28a745;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-  }
-  
-  .button:hover {
-    background-color: #218838;
-  }
+}
 
-  .loading {
+.button:hover {
+    background-color: #218838;
+}
+
+.loading {
     text-align: center;
-  }
+}

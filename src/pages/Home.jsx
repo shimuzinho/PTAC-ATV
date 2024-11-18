@@ -2,10 +2,12 @@ import { useEffect, useState } from 'react'
 import ListarProdutos from '../components/ListarProdutos'
 import style from '../styles/style.module.css'
 import AdicionarProduto from '../components/AdicionarProduto'
+import Buscar from '../components/Buscar';
 
 export default function Home() {
-    const [produtos, setProdutos] = useState([])
-    const [produtosCarrinho, setProdutosCarrinho] = useState([])
+    const [produtos, setProdutos] = useState([]);
+    const [produtosCarrinho, setProdutosCarrinho] = useState([]);
+    const [palavraBusca, setPalavraBusca] = useState('');
 
     useEffect(() => {
         const receberLista = async () => {
@@ -23,6 +25,10 @@ export default function Home() {
     return (
         <>
             <AdicionarProduto setProdutos={setProdutos} produtos={produtos}/>
+            <div>
+                <Buscar lista={produtos} setLista={setProdutos}/>
+            </div>
+            <ListarProdutos lista={listaAux}></ListarProdutos>
             <div className={style.container}>
                 <div className={style.produtos}>
                     <h1 className={style.titulo}>Produtos:</h1>
