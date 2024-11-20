@@ -1,41 +1,50 @@
 import style from '../styles/style.module.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-export default function Buscar({ lista, setLista }) {
-    const ordemAlfabetica = () => {
-        setLista([...lista].sort((a, b) => a.title.localeCompare(b.title)));
+export default function Buscar({ produtosAux, setProdutosAux, produtos }) {
+    const [nomeBusca, setNomeBusca] = useState('');
+
+    const ordemAlfabeticaAZ = () => {
+        setProdutosAux([...produtosAux].sort((a, b) => a.title.localeCompare(b.title)));
     };
 
-    const ordemAlfabeticaAoContrario = () => {
-        setLista([...lista].sort((a, b) => b.title.localeCompare(a.title)));
+    const ordemAlfabeticaZA = () => {
+        setProdutosAux([...produtosAux].sort((a, b) => b.title.localeCompare(a.title)));
     };
 
-    const valorOrdenar = () => {
-        setLista([...lista].sort((a, b) => {
-            if (a.price >= b.price) {
-                return 1
+    const precoMenorParaMaior = () => {
+        setProdutosAux([...produtosAux].sort((a, b) => a.price - b.price)); 
+    };
+
+    const precoMaiorParaMenor = () => {
+        setProdutosAux([...produtosAux].sort((a, b) => b.preco - a.preco));
+    };
+
+    useEffect(() => {
+        const buscarProdutos = () => {
+            if (nomeBusca.length > 0) {
+                const nomeBuscarFormatado = nomeBusca.toLowerCase();
+                const produtosBuscados = produtos.filter(el => el.title.toLowerCase().includes(nomeBuscarFormatado));
+                setProdutosAux(produtosBuscados);
             } else {
-                return -1
+                setProdutosAux(produtos);
             }
-        }));
-    };
-
-    const valorOrdenarAoContrario = () => {
-        setLista([...lista].sort((a, b) => {
-            if (a.price >= b.price) {
-                return -1
-            } else {
-                return 1
-            }
-        }));
-    };
+        };
+        buscarProdutos();
+    }, [nomeBusca])
 
     return (
-        <>
-            <button onClick={() => ordemAlfabetica()}>AZ</button>
-            <button onClick={() => ordemAlfabeticaAoContrario()}>ZA</button>
-            <button onClick={() => valorOrdenar()}>Valor</button>
-            <button onClick={() => valorOrdenarAoContrario()}>Valor ao contrario</button>
-        </>
+        <div>
+            <button className={style.botaoBuscar} style={{marginLeft: '1.3%'}} onClick={() => ordemAlfabeticaAZ()}>AZ</button>
+            <button className={style.botaoBuscar} onClick={() => ordemAlfabeticaZA()}>ZA</button>
+            <button className={style.botaoBuscar} onClick={() => precoMenorParaMaior()}>Preço (Menor para Maior)</button>
+            <button className={style.botaoBuscar} onClick={() => precoMaiorParaMenor()}>Preço (Maior para Menor)</button>
+            <input
+            className={style.inputBuscar}
+                placeholder='Buscar produto'
+                value={nomeBusca}
+                onChange ={(event) => setNomeBusca(event.target.value)}
+            />
+        </div>
     );
 };

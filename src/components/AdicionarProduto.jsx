@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import style from '../styles/style.module.css';
 
-export default function AdicionarProduto({ setProdutos, produtos }) {
+export default function AdicionarProduto({ produtos, setProdutos }) {
   const { register, handleSubmit } = useForm();
 
   const adicionar = (novoProduto) => {

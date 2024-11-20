@@ -1,24 +1,22 @@
 import style from '../styles/style.module.css'
 
-export default function RemoverProduto ({ setCarrinho, carrinhoAtual, produto, setProdutos, produtos }) {
+export default function RemoverProduto ({ produtos, setProdutos, carrinho, setCarrinho, prod }) {
   const removerProdutoArray = (prod) => {
-    const novosProdutos = produtos.filter(el => el.id != prod.id)
-    setProdutos(novosProdutos)
-  }
-
-  console.log(carrinhoAtual)
+    const novosProdutos = produtos.filter(el => el.id != prod.id);
+    setProdutos(novosProdutos);
+  };
 
   const removerProdutoCarrinho = (prod) => {
-    if (carrinhoAtual.includes(prod)) {
-      const novoCarrinho = carrinhoAtual.filter(el => el.id != prod.id)
-      setCarrinho(novoCarrinho)
-    }
-  }
+    if (carrinho.includes(prod)) {
+      const novoCarrinho = carrinho.filter(el => el.id != prod.id);
+      setCarrinho(novoCarrinho);
+    };
+  };
 
   return (
     <button className={style.botaoRemover} onClick={() => {
-      removerProdutoArray(produto)
-      removerProdutoCarrinho(produto)
+      removerProdutoArray(prod)
+      removerProdutoCarrinho(prod)
     }}>Remover Produto</button>
-  )
-}
+  );
+};

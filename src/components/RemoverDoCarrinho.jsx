@@ -1,15 +1,15 @@
 
-import style from '../styles/style.module.css'
+import style from '../styles/style.module.css';
 
-export default function RemoverDoCarrinho ({ setCarrinho, carrinhoAtual, produto }) {
+export default function RemoverDoCarrinho ({ carrinho, setCarrinho, prod }) {
     const removerItem = (prod) => {
-        const novoCarrinho = carrinhoAtual.filter(el => el.id != prod.id)
-        setCarrinho(novoCarrinho)
-    }
+        const novoCarrinho = carrinho.filter(el => el.id != prod.id);
+        setCarrinho(novoCarrinho);
+    };
 
     return (
         <button className={style.botaoRemover} onClick={() => {2
-            removerItem(produto)
+            removerItem(prod);
         }}>Remover do Carrinho</button>
-    )
-}
+    );
+};

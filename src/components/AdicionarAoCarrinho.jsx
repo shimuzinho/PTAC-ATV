@@ -1,16 +1,16 @@
 import style from '../styles/style.module.css'
 
-export default function AdicionarAoCarrinho({ setCarrinho, carrinhoAtual, produto }) {
+export default function AdicionarAoCarrinho({ carrinho, setCarrinho, prod }) {
     const adicionar = (prod) => {
-        if (!carrinhoAtual.includes(prod)) {
-            const novoCarrinho = [...carrinhoAtual, prod]
+        if (!carrinho.includes(prod)) {
+            const novoCarrinho = [...carrinho, prod]
             setCarrinho(novoCarrinho)
         }
     }
 
     return (
         <button className={style.botaoAdicionar} onClick={() => {
-            adicionar(produto)
+            adicionar(prod)
         }}>Adicionar ao Carrinho</button>
     )
 }

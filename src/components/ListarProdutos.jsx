@@ -4,9 +4,10 @@ import RemoverDoCarrinho from './RemoverDoCarrinho'
 import RemoverProduto from './RemoverProduto'
 import Loading from './Loading'
 
-export default function ListarProdutos({ lista, button = false, setCarrinho, listaCarrinho, setProdutos, loading, tipo }) {
+export default function ListarProdutos({ produtosMostrados, produtosAux, carrinho, setCarrinho, produtos, setProdutos, loading = false, tipo, buttonAdicionarCarrinho = false }) {
     if (loading) {
-        if (lista.length == 0) {
+        if (produtos.length == 0) {
+            console.log(produtosMostrados)
             return (
                 <Loading/>
             )
@@ -15,16 +16,16 @@ export default function ListarProdutos({ lista, button = false, setCarrinho, lis
 
     return (
         <main className={style.containerProdutos}>
-            {lista.map(el => (
+            {produtosMostrados.map(el => (
                 <div key={el.id} className={style.containerIndividualProduto}>
                     <img src={el.images[0]} alt={el.title} className={style.imagem} />
                     <p className={style.textoTitulo}>{el.title}</p>
                     <p className={style.preco}>R$ {el.price}</p>
-                    {button ? (
-                        <AdicionarAoCarrinho setCarrinho={setCarrinho} carrinhoAtual={listaCarrinho} produto={el}/>
-                    ) : (<RemoverDoCarrinho setCarrinho={setCarrinho} carrinhoAtual={listaCarrinho} produto={el}/>)}
+                    {buttonAdicionarCarrinho ? (
+                        <AdicionarAoCarrinho carrinho={carrinho} setCarrinho={setCarrinho} prod={el} />
+                    ) : (<RemoverDoCarrinho carrinho={carrinho} setCarrinho={setCarrinho} prod={el} />)}
                     {el.id > 30 && tipo != 'carrinho' && (
-                        <RemoverProduto setCarrinho={setCarrinho} carrinhoAtual={listaCarrinho} produto={el} setProdutos={setProdutos} produtos={lista}/>
+                        <RemoverProduto produtos={produtos} setProdutos={setProdutos} prod={el}/>
                     )}
                 </div>
             ))}
